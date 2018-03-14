@@ -1,0 +1,4 @@
+﻿{
+  "NorthwindConnectionString": "Data Source=.\\sqlexpress;initial catalog=Northwind;integrated security=True;MultipleActiveResultSets=True;",
+
+}
