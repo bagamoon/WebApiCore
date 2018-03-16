@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WebApiCore.Models;
 
 namespace WebApiCore.Controllers
@@ -14,11 +19,13 @@ namespace WebApiCore.Controllers
     [Route("api/bind/[action]")]
     public class BindingController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             return Ok("hello world");
         }        
 
+        [Authorize]
         [HttpPost]
         public Products QueryProducts([FromBody]QueryDto query)
         {
@@ -30,6 +37,12 @@ namespace WebApiCore.Controllers
 
                 return product;
             }
+        }
+
+        [HttpPost]
+        public IEnumerable<QueryDto> PassListParam([FromBody]QueryCollection collection)
+        {
+            return collection.Queries;
         }
 
         public class QueryDto
