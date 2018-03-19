@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using WebApiCore.Controllers;
@@ -26,12 +27,13 @@ namespace WebApiCore_Test.Controller
         [TestMethod]
         public void QueryProducts_Should_Return_Product()
         {
-            var fakeProductRepository = Substitute.For<IProductRepository>();
+            var fakeLogger = Substitute.For<ILogger<AuthController>>();
+            var fakeProductRepository = Substitute.For<IProductRepository>();            
 
             var expected = new Product { ProductID = 100, ProductName = "FakeProduct" };
             fakeProductRepository.GetProductById(Arg.Any<QueryDto>()).Returns(expected);
 
-            var controller = new BindingController(fakeProductRepository);
+            var controller = new BindingController(fakeLogger, fakeProductRepository);
 
             var queryDto = new QueryDto { ProductId = 100 };
             var actual = controller.QueryProducts(queryDto);

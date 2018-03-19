@@ -10,6 +10,7 @@ using Dapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using WebApiCore.DTO;
 using WebApiCore.Models;
@@ -21,10 +22,12 @@ namespace WebApiCore.Controllers
     [Route("api/bind/[action]")]
     public class BindingController : Controller
     {
+        private readonly ILogger<AuthController> _logger;
         private readonly IProductRepository _productRepository;
 
-        public BindingController(IProductRepository productRepository)
+        public BindingController(ILogger<AuthController> logger ,IProductRepository productRepository)
         {
+            _logger = logger;
             _productRepository = productRepository;
         }
 

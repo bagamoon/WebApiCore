@@ -7,7 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using WebApiCore.DTO;
 
 namespace WebApiCore.Controllers
 {
@@ -15,6 +17,13 @@ namespace WebApiCore.Controllers
     [Route("api/Auth/[action]")]
     public class AuthController : Controller
     {
+        private readonly ILogger<AuthController> _logger;
+
+        public AuthController(ILogger<AuthController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpPost]
         public object GetToken([FromBody]ValidateDto validateDto)
         {
@@ -44,20 +53,5 @@ namespace WebApiCore.Controllers
                 return BadRequest("wrong account or password");
             }
         }
-
-        public class ValidateDto
-        {
-            public string Account { get; set; }
-
-            public string Password { get; set; }
-        }
-
-        public class ApiToken
-        {
-            public string Id { get; set; }
-
-            public DateTimeOffset ExpiredTime { get; set; }
-        }
-
     }
 }

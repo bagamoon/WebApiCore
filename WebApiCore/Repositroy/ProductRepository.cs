@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,8 +14,17 @@ namespace WebApiCore.Repositroy
 {
     public class ProductRepository : IProductRepository
     {
+        private readonly ILogger<ProductRepository> _logger;
+
+        public ProductRepository(ILogger<ProductRepository> logger)
+        {
+            _logger = logger;
+        }
+
         public Product GetProductById(QueryDto query)
         {
+            _logger.LogDebug($"GetProductById: {JsonConvert.SerializeObject(query)}");
+
             using (var conn = new SqlConnection(WebConfig.NorthwindConnectionString))
             {
                 var product = conn.QueryFirstOrDefault<Product>(
@@ -26,6 +37,8 @@ namespace WebApiCore.Repositroy
 
         public IEnumerable<Product> GetTopFiveProducts()
         {
+            _logger.LogDebug("GetTopFiveProducts");
+
             using (var conn = new SqlConnection(WebConfig.NorthwindConnectionString))
             {
                 var products = conn.Query<Product>("select top 5 * from Products");

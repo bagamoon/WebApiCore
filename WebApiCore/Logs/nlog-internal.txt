@@ -1,0 +1,20 @@
+2018-03-19 16:21:27.3980 Info Message Template Auto Format enabled
+2018-03-19 16:21:27.5530 Info Adding target File Target[ALL]
+2018-03-19 16:21:27.5756 Info Configured from an XML element in D:\010_GitHub\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\nlog.config...
+2018-03-19 16:21:27.5975 Info Found 20 configuration items
+2018-03-19 16:28:12.0257 Info Message Template Auto Format enabled
+2018-03-19 16:28:12.1059 Info Adding target File Target[ALL]
+2018-03-19 16:28:12.1059 Info Configured from an XML element in D:\010_GitHub\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\nlog.config...
+2018-03-19 16:28:12.1341 Info Found 20 configuration items
+2018-03-19 16:34:34.3291 Info Message Template Auto Format enabled
+2018-03-19 16:34:34.4226 Info Adding target File Target[ALL]
+2018-03-19 16:34:34.4313 Info Configured from an XML element in D:\010_GitHub\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\nlog.config...
+2018-03-19 16:34:34.4521 Info Found 20 configuration items
+2018-03-19 16:35:11.1928 Info Message Template Auto Format enabled
+2018-03-19 16:35:11.2746 Info Adding target File Target[ALL]
+2018-03-19 16:35:11.2746 Info Configured from an XML element in D:\010_GitHub\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\nlog.config...
+2018-03-19 16:35:11.3036 Info Found 20 configuration items
+2018-03-19 16:35:25.9370 Info Message Template Auto Format enabled
+2018-03-19 16:35:26.0065 Info Adding target File Target[ALL]
+2018-03-19 16:35:26.0133 Info Configured from an XML element in D:\010_GitHub\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\nlog.config...
+2018-03-19 16:35:26.0258 Info Found 20 configuration items
