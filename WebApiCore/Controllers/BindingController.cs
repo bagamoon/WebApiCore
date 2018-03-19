@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using WebApiCore.DTO;
 using WebApiCore.Models;
 using WebApiCore.Repositroy;
 
@@ -44,18 +45,6 @@ namespace WebApiCore.Controllers
         public IEnumerable<QueryDto> PassListParam([FromBody]QueryCollection collection)
         {
             return collection.Queries;
-        }
-
-        public class QueryDto
-        {
-            public int ProductId { get; set; }
-
-            public string ProductName { get; set; }
-        }
-
-        public class QueryCollection
-        {
-            public List<QueryDto> Queries { get; set; }
         }
     }
 }

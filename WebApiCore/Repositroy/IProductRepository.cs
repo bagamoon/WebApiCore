@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiCore.DTO;
 using WebApiCore.Models;
-using static WebApiCore.Controllers.BindingController;
 
 namespace WebApiCore.Repositroy
 {
