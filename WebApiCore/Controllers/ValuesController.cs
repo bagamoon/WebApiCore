@@ -8,21 +8,25 @@ using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WebApiCore.Models;
+using WebApiCore.Repositroy;
 
 namespace WebApiCore.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly IProductRepository _productRepository;
+
+        public ValuesController(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<Products> Get()
+        public IEnumerable<Product> Get()
         {
-            using (var conn = new SqlConnection(WebConfig.NorthwindConnectionString))
-            {
-                var products = conn.Query<Products>("select top 5 * from Products");
-                return products;
-            }
-        }      
+            return _productRepository.GetTopFiveProducts();
+        }        
     }
 }

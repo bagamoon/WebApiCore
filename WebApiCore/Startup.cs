@@ -15,6 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using WebApiCore.App_Start;
+using WebApiCore.Repositroy;
 using static WebApiCore.Controllers.AuthController;
 
 namespace WebApiCore
@@ -30,7 +32,7 @@ namespace WebApiCore
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {            
             var key = "WebApiTestingKey";
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -63,6 +65,8 @@ namespace WebApiCore
                     });
 
             services.AddMvc();
+
+            services.SetupDependencyInjection();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,13 +12,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using WebApiCore.Models;
+using WebApiCore.Repositroy;
 
 namespace WebApiCore.Controllers
-{
+{    
     [Produces("application/json")]
     [Route("api/bind/[action]")]
     public class BindingController : Controller
     {
+        private readonly IProductRepository _productRepository;
+
+        public BindingController(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -27,16 +35,9 @@ namespace WebApiCore.Controllers
 
         [Authorize]
         [HttpPost]
-        public Products QueryProducts([FromBody]QueryDto query)
+        public Product QueryProducts([FromBody]QueryDto query)
         {
-            using (var conn = new SqlConnection(WebConfig.NorthwindConnectionString))
-            {                
-                var product = conn.QueryFirstOrDefault<Products>(
-                    "select * from products where ProductId = @productId", 
-                    new { ProductId = query.ProductId });
-
-                return product;
-            }
+            return _productRepository.GetProductById(query);
         }
 
         [HttpPost]
